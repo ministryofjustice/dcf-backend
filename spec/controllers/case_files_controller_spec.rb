@@ -24,11 +24,15 @@ RSpec.describe CaseFilesController, type: :controller do
   # CaseFile. As you add validations to CaseFile, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      blob: nil
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      urn: 'xx'
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -38,14 +42,17 @@ RSpec.describe CaseFilesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all case_files as @case_files" do
-      case_file = CaseFile.create! valid_attributes
+      cf1 = CaseFile.create(blob: {'case' => {'date' => '20150213T1420', 'postcode' => 'RG2 7PU'} } )
+      cf2 = CaseFile.create(blob: {'case' => {'date' => '20150213T1331', 'postcode' => 'SW10 9LB'} } )
       get :index, {}, valid_session
-      expect(assigns(:case_files)).to eq([case_file])
+      expect(assigns(:case_files)).to eq([cf1, cf2])
+      expect(response.body).to eq assigns(:case_files).to_json
     end
   end
 
   describe "GET #show" do
     it "assigns the requested case_file as @case_file" do
+      skip
       case_file = CaseFile.create! valid_attributes
       get :show, {:id => case_file.to_param}, valid_session
       expect(assigns(:case_file)).to eq(case_file)
@@ -55,12 +62,14 @@ RSpec.describe CaseFilesController, type: :controller do
   describe "GET #new" do
     it "assigns a new case_file as @case_file" do
       get :new, {}, valid_session
-      expect(assigns(:case_file)).to be_a_new(CaseFile)
+      expect(assigns(:case_file)).to be_instance_of(CaseFile)
+      expect(response.body).to eq assigns(:case_file).to_json
     end
   end
 
   describe "GET #edit" do
     it "assigns the requested case_file as @case_file" do
+      skip
       case_file = CaseFile.create! valid_attributes
       get :edit, {:id => case_file.to_param}, valid_session
       expect(assigns(:case_file)).to eq(case_file)
@@ -70,18 +79,21 @@ RSpec.describe CaseFilesController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new CaseFile" do
+        skip
         expect {
           post :create, {:case_file => valid_attributes}, valid_session
         }.to change(CaseFile, :count).by(1)
       end
 
       it "assigns a newly created case_file as @case_file" do
+        skip
         post :create, {:case_file => valid_attributes}, valid_session
         expect(assigns(:case_file)).to be_a(CaseFile)
         expect(assigns(:case_file)).to be_persisted
       end
 
       it "redirects to the created case_file" do
+        skip
         post :create, {:case_file => valid_attributes}, valid_session
         expect(response).to redirect_to(CaseFile.last)
       end
@@ -89,11 +101,13 @@ RSpec.describe CaseFilesController, type: :controller do
 
     context "with invalid params" do
       it "assigns a newly created but unsaved case_file as @case_file" do
+        skip
         post :create, {:case_file => invalid_attributes}, valid_session
         expect(assigns(:case_file)).to be_a_new(CaseFile)
       end
 
       it "re-renders the 'new' template" do
+        skip
         post :create, {:case_file => invalid_attributes}, valid_session
         expect(response).to render_template("new")
       end
@@ -107,6 +121,7 @@ RSpec.describe CaseFilesController, type: :controller do
       }
 
       it "updates the requested case_file" do
+        skip
         case_file = CaseFile.create! valid_attributes
         put :update, {:id => case_file.to_param, :case_file => new_attributes}, valid_session
         case_file.reload
@@ -114,12 +129,14 @@ RSpec.describe CaseFilesController, type: :controller do
       end
 
       it "assigns the requested case_file as @case_file" do
+        skip
         case_file = CaseFile.create! valid_attributes
         put :update, {:id => case_file.to_param, :case_file => valid_attributes}, valid_session
         expect(assigns(:case_file)).to eq(case_file)
       end
 
       it "redirects to the case_file" do
+        skip
         case_file = CaseFile.create! valid_attributes
         put :update, {:id => case_file.to_param, :case_file => valid_attributes}, valid_session
         expect(response).to redirect_to(case_file)
@@ -128,12 +145,14 @@ RSpec.describe CaseFilesController, type: :controller do
 
     context "with invalid params" do
       it "assigns the case_file as @case_file" do
+        skip
         case_file = CaseFile.create! valid_attributes
         put :update, {:id => case_file.to_param, :case_file => invalid_attributes}, valid_session
         expect(assigns(:case_file)).to eq(case_file)
       end
 
       it "re-renders the 'edit' template" do
+        skip
         case_file = CaseFile.create! valid_attributes
         put :update, {:id => case_file.to_param, :case_file => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
@@ -143,6 +162,7 @@ RSpec.describe CaseFilesController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested case_file" do
+      skip
       case_file = CaseFile.create! valid_attributes
       expect {
         delete :destroy, {:id => case_file.to_param}, valid_session
@@ -150,6 +170,7 @@ RSpec.describe CaseFilesController, type: :controller do
     end
 
     it "redirects to the case_files list" do
+      skip
       case_file = CaseFile.create! valid_attributes
       delete :destroy, {:id => case_file.to_param}, valid_session
       expect(response).to redirect_to(case_files_url)

@@ -5,7 +5,8 @@ class CaseFilesController < ApplicationController
   # GET /case_files
   # GET /case_files.json
   def index
-    @case_files = CaseFile.all
+    @case_files = CaseFile.by_id
+    render json: @case_files
   end
 
   # GET /case_files/1
