@@ -16,6 +16,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files/new
   def new
     @case_file = CaseFile.new
+    @case_file.save!
     render json: @case_file
   end
 
