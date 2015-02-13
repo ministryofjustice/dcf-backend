@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Urn:</strong>
+  <%= @case_file.urn %>
+</p>
+
+<p>
+  <strong>Blob:</strong>
+  <%= @case_file.blob %>
+</p>
+
+<%= link_to 'Edit', edit_case_file_path(@case_file) %> |
+<%= link_to 'Back', case_files_path %>

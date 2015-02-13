@@ -1,0 +1,27 @@
+<h1>Listing case_files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Urn</th>
+      <th>Blob</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @case_files.each do |case_file| %>
+      <tr>
+        <td><%= case_file.urn %></td>
+        <td><%= case_file.blob %></td>
+        <td><%= link_to 'Show', case_file %></td>
+        <td><%= link_to 'Edit', edit_case_file_path(case_file) %></td>
+        <td><%= link_to 'Destroy', case_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Case file', new_case_file_path %>
