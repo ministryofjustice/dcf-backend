@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :case_files
+  resources :case_files, :defaults => { :format => :json }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

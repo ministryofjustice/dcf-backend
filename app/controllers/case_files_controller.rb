@@ -1,4 +1,5 @@
 class CaseFilesController < ApplicationController
+  respond_to :json
   before_action :set_case_file, only: [:show, :edit, :update, :destroy]
 
   # GET /case_files
@@ -15,6 +16,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files/new
   def new
     @case_file = CaseFile.new
+    render json: @case_file
   end
 
   # GET /case_files/1/edit
