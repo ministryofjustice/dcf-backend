@@ -19,10 +19,12 @@ class CaseFile < ActiveRecord::Base
   after_initialize :generate_urn_and_empty_blob
 
 
-  def update_blob(new_blob)
+  def update_blob(bob_updates_as_json)
+    blob_updates = ActiveSupport::JSON.decode bob_updates_as_json
     blob_obj = Blob.new(self.blob)
-    blob_obj.update(new_blob)
+    blob_obj.update(blob_updates)
     self.blob = blob_obj.data
+    self.save!
   end
 
 

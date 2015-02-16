@@ -12,6 +12,7 @@ class CaseFilesController < ApplicationController
   # GET /case_files/1
   # GET /case_files/1.json
   def show
+    render json: @case_file
   end
 
   # GET /case_files/new
@@ -22,48 +23,41 @@ class CaseFilesController < ApplicationController
   end
 
   # GET /case_files/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /case_files
   # POST /case_files.json
-  def create
-    @case_file = CaseFile.new(case_file_params)
+  # def create
+  #   @case_file = CaseFile.new(case_file_params)
 
-    respond_to do |format|
-      if @case_file.save
-        format.html { redirect_to @case_file, notice: 'Case file was successfully created.' }
-        format.json { render :show, status: :created, location: @case_file }
-      else
-        format.html { render :new }
-        format.json { render json: @case_file.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @case_file.save
+  #       format.html { redirect_to @case_file, notice: 'Case file was successfully created.' }
+  #       format.json { render :show, status: :created, location: @case_file }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @case_file.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /case_files/1
   # PATCH/PUT /case_files/1.json
   def update
-    respond_to do |format|
-      if @case_file.update(case_file_params)
-        format.html { redirect_to @case_file, notice: 'Case file was successfully updated.' }
-        format.json { render :show, status: :ok, location: @case_file }
-      else
-        format.html { render :edit }
-        format.json { render json: @case_file.errors, status: :unprocessable_entity }
-      end
-    end
+    @case_file.update_blob(params['case_file'])
+    render json: params['case_file']
   end
 
   # DELETE /case_files/1
   # DELETE /case_files/1.json
-  def destroy
-    @case_file.destroy
-    respond_to do |format|
-      format.html { redirect_to case_files_url, notice: 'Case file was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @case_file.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to case_files_url, notice: 'Case file was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
