@@ -46,7 +46,7 @@ class CaseFilesController < ApplicationController
   # PATCH/PUT /case_files/1.json
   def update
     @case_file.update_blob(params['case_file'])
-    render json: params['case_file']
+    render json:@case_file
   end
 
   # DELETE /case_files/1
