@@ -1,6 +1,6 @@
 class CaseFilesController < ApplicationController
   respond_to :json
-  before_action :set_case_file, only: [:show, :edit, :update, :destroy]
+  before_action :set_case_file, only: [:show, :edit, :update]
 
   # GET /case_files
   # GET /case_files.json
@@ -51,13 +51,15 @@ class CaseFilesController < ApplicationController
 
   # DELETE /case_files/1
   # DELETE /case_files/1.json
-  # def destroy
-  #   @case_file.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to case_files_url, notice: 'Case file was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @case_file = CaseFile.where(id: params[:id]).first
+    if @case_file.nil?
+      render json: "Record not found", status: 404
+    else
+      @case_file.destroy
+      render json: "Record deleted"
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
