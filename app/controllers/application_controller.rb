@@ -15,11 +15,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def remote_hostname
-	  require 'resolv'
-	  Resolv.getname(request.remote_ip)
-	end
-
   def add_headers
   	ALLOWED_HOSTS.each do |allowed_host|
   		allowed_host_uri = URI(allowed_host)
@@ -28,6 +23,7 @@ class ApplicationController < ActionController::Base
   			response.headers["Access-Control-Allow-Origin"] = host_from_uri(allowed_host_uri)
   			break
   		end
+  		response.headers["X-Access-Control-Allow-Origin"] = host_from_uri(request_uri)
   	end
 	end
 
