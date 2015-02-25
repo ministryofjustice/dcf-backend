@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   	# 	Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG NO_MATCH - creating x header from #{request_uri.to_s}    #{__FILE__}::#{__LINE__} <<<<<<<"
   	# 	response.headers["X-Access-Control-Allow-Origin"] = host_from_uri(request_uri.to_s)
   	# end
-  	response.headers["Access-Control-Allow-Origin"] = ALLOWED_HOSTS.join(' ')
+  	response.headers["Access-Control-Allow-Origin"] = '*'
 	end
 
 
