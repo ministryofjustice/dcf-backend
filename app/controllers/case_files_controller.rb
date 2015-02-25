@@ -5,6 +5,13 @@ class CaseFilesController < ApplicationController
   # GET /case_files
   # GET /case_files.json
   def index
+    require 'pp'
+    Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG headers    #{__FILE__}::#{__LINE__} <<<<<<<"
+    pp request.headers['Accept-Encoding']
+    Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG origin    #{__FILE__}::#{__LINE__} <<<<<<<"
+    pp request.headers['Origin']
+    Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG X-my-    #{__FILE__}::#{__LINE__} <<<<<<<"
+    pp request.headers['X-My-Origin']
     @case_files = CaseFile.by_id
     render json: @case_files
   end
