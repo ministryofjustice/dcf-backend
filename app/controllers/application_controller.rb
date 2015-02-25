@@ -16,15 +16,21 @@ class ApplicationController < ActionController::Base
   private
 
   def add_headers
-  	ALLOWED_HOSTS.each do |allowed_host|
-  		allowed_host_uri = URI(allowed_host)
-  		request_uri = URI(request.env["REQUEST_URI"])
-  		if uris_match?(allowed_host_uri, request_uri)
-  			response.headers["Access-Control-Allow-Origin"] = host_from_uri(allowed_host_uri)
-  			break
-  		end
-  		response.headers["X-Access-Control-Allow-Origin"] = host_from_uri(request_uri)
-  	end
+  	# request_uri = URI(request.env["REQUEST_URI"])
+  	# Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG request uri is #{request_uri.to_s}    #{__FILE__}::#{__LINE__} <<<<<<<"
+
+  	# ALLOWED_HOSTS.each do |allowed_host|
+  	# 	allowed_host_uri = URI(allowed_host)
+  	# 	Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG checking allowed host #{allowed_host_uri}    #{__FILE__}::#{__LINE__} <<<<<<<"
+  	# 	if uris_match?(allowed_host_uri, request_uri)
+  	# 		Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG MATCH    #{__FILE__}::#{__LINE__} <<<<<<<"
+  	# 		response.headers["Access-Control-Allow-Origin"] = host_from_uri(allowed_host_uri)
+  	# 		break
+  	# 	end
+  	# 	Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG NO_MATCH - creating x header from #{request_uri.to_s}    #{__FILE__}::#{__LINE__} <<<<<<<"
+  	# 	response.headers["X-Access-Control-Allow-Origin"] = host_from_uri(request_uri.to_s)
+  	# end
+  	response.headers["X-Access-Control-Allow-Origin"] = ALLOWED_HOSTS.join(' ')
 	end
 
 
