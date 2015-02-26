@@ -6,27 +6,27 @@ class CaseFilesController < ApplicationController
   # GET /case_files.json
   def index
     require 'pp'
-    Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG headers    #{__FILE__}::#{__LINE__} <<<<<<<"
-    pp request.headers['Accept-Encoding']
-    Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG origin    #{__FILE__}::#{__LINE__} <<<<<<<"
-    pp request.headers['Origin']
-    Rails.logger.info ">>>>>>>>>>>>>>>> DEBUG X-my-    #{__FILE__}::#{__LINE__} <<<<<<<"
-    pp request.headers['X-My-Origin']
     @case_files = CaseFile.by_id
-    render json: @case_files
+    respond_to do |format|
+      format.json
+    end
   end
 
   # GET /case_files/1
   # GET /case_files/1.json
   def show
-    render json: @case_file
+    respond_to do |format|
+      format.json
+    end
   end
 
   # GET /case_files/new
   def new
     @case_file = CaseFile.new
     @case_file.save!
-    render json: @case_file
+    respond_to do |format|
+      format.json
+    end
   end
 
   # GET /case_files/1/edit
@@ -53,7 +53,9 @@ class CaseFilesController < ApplicationController
   # PATCH/PUT /case_files/1.json
   def update
     @case_file.update_blob(params['case_file'])
-    render json:@case_file
+    respond_to do |format|
+      format.json
+    end
   end
 
   # DELETE /case_files/1
