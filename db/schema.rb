@@ -11,14 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213124643) do
+ActiveRecord::Schema.define(version: 20150226090914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "case_files", force: true do |t|
-    t.string   "urn"
     t.text     "blob"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "urn_id"
+  end
+
+  create_table "urns", force: true do |t|
+    t.string   "force_code"
+    t.string   "year_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
