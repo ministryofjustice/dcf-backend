@@ -3,30 +3,9 @@ class CaseFilesController < ApplicationController
   before_action :set_case_file, only: [:show, :edit, :update]
 
 
-
-
-
-
-
-
-
-
   def options
       head :ok
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   # GET /case_files
@@ -52,7 +31,7 @@ class CaseFilesController < ApplicationController
     @case_file = CaseFile.new
     @case_file.save!
     respond_to do |format|
-      format.json
+      format.json 
     end
   end
 

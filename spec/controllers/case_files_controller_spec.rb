@@ -52,7 +52,6 @@ RSpec.describe CaseFilesController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested case_file as @case_file" do
-      skip
       case_file = CaseFile.create! valid_attributes
       get :show, {:id => case_file.to_param}, valid_session
       expect(assigns(:case_file)).to eq(case_file)
@@ -61,7 +60,7 @@ RSpec.describe CaseFilesController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new case_file as @case_file" do
-      get :new, {}, valid_session
+      get :new, {format: :json}, valid_session
       expect(assigns(:case_file)).to be_instance_of(CaseFile)
       expect(response.body).to eq assigns(:case_file).to_json
     end

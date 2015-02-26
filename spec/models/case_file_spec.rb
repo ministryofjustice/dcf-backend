@@ -22,7 +22,7 @@ RSpec.describe CaseFile, type: :model do
         expect(cf.urn).to be_instance_of(Urn)
         expect(cf.urn.id).not_to be_nil
         expect(cf.urn_id).to eq(cf.urn.id)
-        expect(cf.urn_code).to eq sprintf("0601%05d17", cf.urn.id)
+        expect(cf.urn_code).to eq sprintf("06JJ%05d17", cf.urn.id)
       end
     end
 
