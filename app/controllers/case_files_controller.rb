@@ -2,6 +2,33 @@ class CaseFilesController < ApplicationController
   respond_to :json
   before_action :set_case_file, only: [:show, :edit, :update]
 
+
+
+
+
+
+
+
+
+
+  def options
+      head :ok
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   # GET /case_files
   # GET /case_files.json
   def index

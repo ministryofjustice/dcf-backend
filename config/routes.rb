@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :case_files, :defaults => { :format => :json }
 
+    match '/case_files', :controller => 'case_files', :action => 'options', via: [:options], :constraints => {:method => 'OPTIONS'}
+    match '/case_files/:id', :controller => 'case_files', :action => 'options', via: [:options], :constraints => {:method => 'OPTIONS'}
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

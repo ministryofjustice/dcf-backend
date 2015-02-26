@@ -35,6 +35,13 @@ module DcfBackend
       'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     }
 
+    # config.middleware.insert_before 0, "Rack::Cors" do
+    #   allow do
+    #     origins '*'
+    #     resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :patch, :options]
+    #   end
+    # end
+
 
   end
 end
