@@ -14,7 +14,7 @@ class CaseFile < ActiveRecord::Base
 
   belongs_to :urn
 
-  FORCE_CODE = '0601'
+  FORCE_CODE = '06JJ'
 
   serialize :blob, Hash
   scope :by_id, -> { all.order(:id) }
